@@ -28,21 +28,27 @@ def get_car_data(car):
 
     return car
         
-        
-
-    
-    
-    
-    
-    
-    
-
-# function to save data on csv file
 def save_to_csv(data, filename):
-    pass
+    import csv
 
+    file = open(filename, 'w', newline='')
 
+    writer = csv.writer(file)
 
+    writer.writerow(["Car Name", "Price"])
+
+    for item in data:
+        writer.writerow([item["name"], item["price"]])
+
+    file.close()
+
+    print("File saved")
+
+car = input("Enter manufacturer name: ")
+
+data = get_car_data(car)
+
+save_to_csv(data, "carsbytaifoor.csv")
 
 
 
